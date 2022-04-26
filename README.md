@@ -91,8 +91,8 @@ Query Variables:
 ```
 {
   "generateTokenInput": {
-    "email":"adam.hall@aligent.com.au",
-  	"password":"Password1"
+    "email": "<EMAIL>",
+  	"password": "<PASSWORD>"
   }
 }
 ```
