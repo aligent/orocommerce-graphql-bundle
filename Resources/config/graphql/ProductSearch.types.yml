@@ -1,0 +1,98 @@
+ProductSearch:
+    type: object
+    config:
+        description: "An OroCommerce Product Search"
+        fields:
+            totalRecords:
+                type: "Int"
+            pageSize:
+                type: "Int"
+            currentPage:
+                type: "Int"
+            totalPages:
+                type: "Int"
+            results:
+                type: "[ProductSearchResult!]"
+            count:
+                type: "Int"
+
+ProductSearchResult:
+    type: object
+    config:
+        description: "An OroCommerce Product Search Result"
+        fields:
+            product_id:
+                type: "Int!"
+                description: "The id of the Product."
+            name:
+                type: "String!"
+                description: "The name of the Product."
+            sku:
+                type: "String!"
+                description: "The SKU of the Product"
+            type:
+                type: "ProductType"
+                description: "Product Type"
+            image:
+                type: "String"
+                description: "Product Main Image"
+            unit:
+                type: "String"
+                description: "Product Unit"
+            variantFieldsCount:
+                type: "Int"
+                description: "Variant Fields Count"
+            # NOTE: This is actually an Integer in the DB.
+            #       Need to check if this converts correctly.
+            isVariant:
+                type: "Boolean"
+                description: "Is Variant"
+            lowInventoryThreshold:
+                type: "Int"
+                description: "Low Inventory Threshold"
+            isUpcoming:
+                type: "Boolean"
+                description: "Is Upcoming"
+            availabilityDate:
+                type: "String"
+                description: "Availability Date"
+            cplPrice:
+                type: "Float"
+            plPrice:
+                type: "Float"
+            brandId:
+                type: "Int"
+
+ProductType:
+    type: enum
+    config:
+        description: "Types of OroCommerce Product"
+        values:
+            simple:
+                description: "Simple Products"
+            configurable:
+                description: "Configurable Products"
+
+ProductSearchFilter:
+    type: input-object
+    config:
+        description: "Filter a Product Search"
+        fields:
+            name:
+                type: "String"
+                description: "Name of Filter"
+            value:
+                type: "String"
+                description: "Search value for Filter"
+
+ProductSortBy:
+    type: input-object
+    config:
+        description: "Sort Product Search Results"
+        fields:
+            field:
+                type: "String"
+                description: "Sort By Field"
+            dir:
+                type: "String"
+                description: "Direction"

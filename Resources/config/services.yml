@@ -1,0 +1,43 @@
+services:
+    Aligent\GraphQLBundle\GraphQL\Resolver\ProductResolver:
+        arguments:
+            - '@oro_pricing.provider.product_price'
+            - '@oro_inventory.inventory.low_inventory_provider'
+            - '@oro_pricing.model.product_price_scope_criteria_request_handler'
+            - '@oro_security.token_accessor'
+            - '@oro_product.product.manager'
+        tags:
+            - { name: overblog_graphql.query, alias: "product", method: "resolveProduct" }
+            - { name: overblog_graphql.query, alias: "product_search", method: "doProductSearch" }
+            - { name: overblog_graphql.resolver, alias: "product_prices", method: "resolvePrices" }
+            - { name: overblog_graphql.resolver, alias: "product_low_inventory", method: "resolveLowInventory" }
+            - { name: overblog_graphql.resolver, alias: "related_products", method: "resolveRelatedProducts" }
+              
+    Aligent\GraphQLBundle\GraphQL\Resolver\RegionResolver:
+        tags:
+            - { name: overblog_graphql.query, alias: "region", method: "resolveRegion" }
+
+    Aligent\GraphQLBundle\GraphQL\Resolver\LandingPageResolver:
+        tags:
+            - { name: overblog_graphql.query, alias: "landing_page", method: "resolveLandingPage" }
+
+    Aligent\GraphQLBundle\GraphQL\Mutation\GenerateCustomerTokenMutation:
+        arguments:
+            - 'frontend'
+            - '@oro_customer.api.frontend.authentication_provider'
+            - '@oro_config.manager'
+            - '@oro_api.doctrine_helper'
+            - '@translator'
+        tags:
+            - { name: overblog_graphql.mutation, alias: "generate_customer_token", method: "generateCustomerToken" }
+
+    Aligent\GraphQLBundle\GraphQL\Mutation\AddToShoppingListMutation:
+        arguments:
+            - '@oro_shopping_list.manager.shopping_list'
+            - '@oro_shopping_list.manager.current_shopping_list'
+            - '@oro_security.authorization_checker'
+            - '@form.factory'
+            - '@doctrine'
+            - '@validator'
+        tags:
+            - { name: overblog_graphql.mutation, alias: "add_to_shopping_list", method: "addToShoppingList" }

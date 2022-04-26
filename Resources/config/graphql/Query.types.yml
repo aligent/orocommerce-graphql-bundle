@@ -1,0 +1,76 @@
+Query:
+    type: object
+    config:
+        description: "Frontend Queries for OroCommerce"
+        fields:
+            product:
+                description: "Find Product by ID"
+                type: "Product"
+                args:
+                    id:
+                        description: "id of the Product"
+                        type: "Int!"
+                resolve: "@=query('product', args['id'])"
+
+            organization:
+                description: "Find Organization by ID"
+                type: "Organization"
+                args:
+                    id:
+                        description: "id of the Org"
+                        type: "Int!"
+                resolve: "@=query('organization', args['id'])"
+
+#            country:
+#                description: "Find Country by ID"
+#                type: "[Country]"
+#                args:
+#                    id:
+#                        description: "id of the Country"
+#                        type: "String"
+#                resolve: "@=query('country', args['id'])"
+
+            productSearch:
+                description: "Find Products"
+                type: "ProductSearch"
+                args:
+                    name:
+                        description: "Name of the Product"
+                        type: "String"
+                    sku:
+                        description: "SKU of the Product"
+                        type: "String"
+                    category:
+                        description: "Category of the Product"
+                        type: "Int"
+                    filters:
+                        description: "Product Search Filters"
+                        type: "[ProductSearchFilter]"
+                    ## Sorters
+                    sortBy:
+                        description: "Product Sort By"
+                        type: "ProductSortBy"
+                    ## Limiters
+                    type:
+                        type: "ProductType"
+                    isUpcoming:
+                        type: "Boolean"
+                resolve: "@=query('product_search', args, args['filters'], args['sortBy'])"
+
+            region:
+                description: "Find Region by Combined Code"
+                type: "[Region]"
+                args:
+                    combinedCode:
+                        description: "Combined Code of the Region"
+                        type: "String"
+                resolve: "@=query('region', args['combinedCode'])"
+
+            landingPage:
+                description: "Find Landing Page by ID"
+                type: "LandingPage"
+                args:
+                    id:
+                        description: "id of the Landing Page"
+                        type: "Int!"
+                resolve: "@=query('landing_page', args['id'])"

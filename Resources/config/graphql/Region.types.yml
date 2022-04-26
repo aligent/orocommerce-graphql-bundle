@@ -1,0 +1,17 @@
+Region:
+    type: object
+    config:
+        description: "An OroCommerce Region"
+        fields:
+            combinedCode:
+                type: "String!"
+                description: "The combined code of the Region"
+            country:
+                type: "Country!"
+                description: "The country of the Region"
+            code:
+                type: "String!"
+                description: "The code of the Region"
+            name:
+                type: "String!"
+                description: "The name of the Region"

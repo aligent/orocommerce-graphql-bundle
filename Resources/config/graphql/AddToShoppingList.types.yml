@@ -1,0 +1,19 @@
+AddToShoppingListPayload:
+  type: object
+  config:
+    fields:
+      success:
+        type: "Boolean!"
+
+AddToShoppingListInput:
+  type: input-object
+  config:
+    fields:
+      shoppingListId:
+        type: "Int"
+      sku:
+        type: "String!"
+      unit:
+        type: "String!"
+      quantity:
+        type: "Float!"

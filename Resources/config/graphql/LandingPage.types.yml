@@ -1,0 +1,23 @@
+LandingPage:
+    type: object
+    config:
+        description: "An OroCommerce Landing Page (Page)"
+        fields:
+            id:
+                type: "String!"
+                description: "The id of the Landing Page."
+            titles:
+                type: "[Title]"
+                description: "The titles of the Landing Page."
+            content:
+                type: "String"
+                description: "The content of the Landing Page."
+
+Title:
+    type: object
+    config:
+        fields:
+            string:
+                type: "String"
+            text:
+                type: "String"

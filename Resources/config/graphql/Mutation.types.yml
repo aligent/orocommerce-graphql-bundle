@@ -1,0 +1,16 @@
+Mutation:
+  type: object
+  config:
+    fields:
+      generateCustomerToken:
+        type: GenerateCustomerTokenPayload!
+        resolve: "@=mutation('generate_customer_token', args['input']['email'], args['input']['password'])"
+        args:
+          input:
+            type: GenerateCustomerTokenInput
+      addToShoppingList:
+        type: AddToShoppingListPayload!
+        resolve: "@=mutation('add_to_shopping_list', args['input'])"
+        args:
+          input:
+            type: AddToShoppingListInput

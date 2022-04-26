@@ -1,0 +1,26 @@
+#graphql
+overblog_graphql:
+    definitions:
+        config_validation: "%kernel.debug%"
+        schema:
+            query: Query
+            mutation: Mutation
+        builders:
+          fields:
+            - alias: "Timestamped"
+              class: "Aligent\\GraphQLBundle\\GraphQL\\Builder\\CustomAttributeFields"
+    errors_handler:
+        internal_error_message: "An error occurred, please retry later or contact us!"
+
+security:
+    firewalls:
+        graphql_secured:
+            pattern:   '^/graphql'
+            provider:  commerce_customer_user
+            context:   customer_identity
+            stateless: true
+            anonymous_customer_user: true
+            wsse:
+                lifetime: 3600
+                realm: 'Secured Frontend API'
+                profile: 'UsernameToken'

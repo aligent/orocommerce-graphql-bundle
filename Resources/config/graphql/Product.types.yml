@@ -1,0 +1,103 @@
+Product:
+    type: object
+    config:
+        description: "An OroCommerce Product"
+        fields:
+            id:
+                type: "String!"
+                description: "The id of the Product."
+            name:
+                type: "String!"
+                description: "The name of the Product."
+            sku:
+                type: "String!"
+                description: "The SKU of the Product"
+            inventoryStatus:
+                type: "String!"
+                description: "The inventory status of the Product"
+            organization:
+                type: "Organization!"
+                description: "The Organization of the Product"
+            prices:
+                #type: "ProductPriceConnection"
+                #argsBuilder: Relay::ForwardConnection
+                type: "[ProductPrice!]"
+                resolve: "@=resolver('product_prices', [value,args])"
+            type:
+                type: "String!"
+                description: "The type of the Product"
+            messages:
+                type: "[Message]"
+                resolve: "@=resolver('product_low_inventory', [value,args])"
+            relatedProduct:
+                type: "[RelatedProduct]"
+                resolve: "@=resolver('related_products', [value,args])"
+#            productImage:
+#                type: "[ProductImage]"
+#                resolve: "@=resolver('product_images', [value,args])"
+
+ProductPrice:
+    type: object
+    config:
+        fields:
+            price:
+                type: "Price"
+            currency:
+                type: "String!"
+            quantity:
+                type: "Float!"
+            unit:
+                type: "String!"
+
+Price:
+    type: object
+    config:
+        fields:
+            value:
+                type: "Float!"
+            currency:
+                type: "String!"
+
+RelatedProduct:
+    type: object
+    config:
+        description: "An OroCommerce Product"
+        fields:
+            id:
+                type: "String!"
+                description: "The id of the Product."
+            name:
+                type: "String!"
+                description: "The name of the Product."
+            sku:
+                type: "String!"
+                description: "The SKU of the Product"
+
+ProductImage:
+    type: object
+    config:
+        fields:
+            type:
+                type: "String!"
+            url:
+                type: "String!"
+
+Message:
+    type: object
+    config:
+        fields:
+            type:
+                type: "MessageType"
+            text:
+                type: "String"
+
+MessageType:
+    type: enum
+    config:
+        description: "List of messages"
+        values:
+            error:
+                description: "Error"
+            warning:
+                description: "Warning"
+

@@ -1,0 +1,14 @@
+Country:
+    type: object
+    config:
+        description: "An OroCommerce Country"
+        fields:
+            iso2Code:
+                type: "String!"
+                description: "The iso2 code of the Country."
+            iso3Code:
+                type: "String!"
+                description: "The iso3 code of the Country."
+            name:
+                type: "String!"
+                description: "The name of the country."

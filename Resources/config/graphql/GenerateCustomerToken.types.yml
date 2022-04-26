@@ -1,0 +1,21 @@
+GenerateCustomerTokenPayload:
+  type: object
+  config:
+    fields:
+      token:
+        type: "String!"
+
+GenerateCustomerTokenInput:
+  type: input-object
+  config:
+    fields:
+      email:
+        type: "String!"
+        validation:
+          - Email: ~
+      password:
+        type: "String!"
+        validation: # applying constraints to `username`
+          - Length:
+              min: 6
+              max: 32

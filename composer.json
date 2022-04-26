@@ -1,0 +1,12 @@
+{
+    "name": "aligent/orocommerce-graphql-bundle",
+    "description": "A bundle to add GraphQL support to OroCommerce",
+    "type": "library",
+    "require": {
+        "overblog/graphiql-bundle": "^0.3.0",
+        "overblog/graphql-bundle": "^0.14.3",
+        "spatie/data-transfer-object": "3.7",
+        "oro/commerce": "5.0.*"
+    },
+    "license": "GPL-3.0"
+}

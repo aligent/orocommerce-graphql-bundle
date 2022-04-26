@@ -1,0 +1,3 @@
+bundles:
+  - { name: Overblog\GraphQLBundle\OverblogGraphQLBundle, priority: 299 }
+  - { name: Aligent\GraphQLBundle\AligentGraphQLBundle, priority: 300 }
