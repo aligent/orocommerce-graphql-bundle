@@ -23,7 +23,7 @@ This bundle was created during a hackathon event at Aligent as a proof of concep
 4. In development mode head to `/graphiql` to access an interactive graphql UI to make GrapqhQL Queries
 
 ## Example Queries
-```
+```graphql
 query {
   product (id: 1) {
     sku,
@@ -79,7 +79,7 @@ query {
 
 Login Mutation:
 Generates a WSSE authentication token using like Oro's existing `/login` API. See documentation [here](https://doc.oroinc.com/api/authentication/wsse/#header-generation) on how to generate an auth header.
-```
+```graphql
 mutation ($generateTokenInput: GenerateCustomerTokenInput) {
   generateCustomerToken (input: $generateTokenInput) {
     token
@@ -88,7 +88,7 @@ mutation ($generateTokenInput: GenerateCustomerTokenInput) {
 ```
 
 Query Variables:
-```
+```json
 {
   "generateTokenInput": {
     "email": "<EMAIL>",
@@ -99,7 +99,7 @@ Query Variables:
 
 Add to shopping list Mutation:
 Adds a product to the shopping list (Shopping list must already exist, and authenticated user must have access to it).
-```
+```graphql
 mutation ($addToShoppingListInput: AddToShoppingListInput) {
   addToShoppingList(input: $addToShoppingListInput) {
     success
@@ -108,7 +108,7 @@ mutation ($addToShoppingListInput: AddToShoppingListInput) {
 ```
 
 Query Variables:
-```
+```json
 {
   "addToShoppingListInput": {
     "sku": "2JD29",
